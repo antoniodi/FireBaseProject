@@ -1,0 +1,13 @@
+<p>
+  person works!
+</p>
+<mat-list dense *ngFor="let person of persons">
+  <mat-list-item>{{person.fullName}} {{person.taxId}} {{person.documentType}} </mat-list-item>
+</mat-list>
+
+<h4>Users</h4>
+
+<ng-container *ngFor="let user of users">
+    <p>{{user.name}} {{user.username}} {{user.email}}</p>
+  </ng-container>
+

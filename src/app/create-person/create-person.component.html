@@ -1,0 +1,20 @@
+<p>
+  create-person works!
+</p>
+<form>
+  <mat-form-field class="full-size">
+    <input matInput placeholder="Full name" [(ngModel)]="aPerson.fullName"  name="fullName">
+  </mat-form-field>
+  <br>
+  <mat-form-field class="two-input">
+    <mat-label>Document type</mat-label>
+    <mat-select value="CC" [(ngModel)]="aPerson.documentType" name="documentType">
+      <mat-option value="CC">CC</mat-option>
+    </mat-select>
+  </mat-form-field>  
+  <mat-form-field class="two-input" >
+    <input matInput type="number" maxlength="10" placeholder="taxId" [(ngModel)]="aPerson.taxId" name="taxId">
+  </mat-form-field>
+</form>
+<span> <button mat-flat-button (click)="savePerson()" color="primary">Save</button> </span>
+<span> <button mat-flat-button [routerLink]="'/'" color="accent">Cancel</button> </span>
