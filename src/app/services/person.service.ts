@@ -1,37 +1,43 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Person } from '../interfaces/person';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonService {
-  persons: any = [
-    {fullName: 'Andrea Torres Pimiento', documentType: 'CC', taxId: '37514684'},
-    {fullName: 'Dilson', documentType: 'CC', taxId: '123456'},
-    {fullName: 'William', documentType: 'CC', taxId: '654321'},
-  ];
 
+  API_ENDPOINTS = 'https://bamboo-velocity-127420.firebaseio.com';
+  persons: any;
   constructor(private db: AngularFirestore, private http: HttpClient) {}
 
   public getPersons() {
     return this.db.collection('person');
   }
 
-  public getPersonsByTaxId(taxId) {
+  public getPersonsByTaxId(taxId: string): Person {
     return this.persons.filter((aPerson) => {
       return aPerson.taxId === taxId;
     })[0] || null;
   }
 
-  public savePerson(aPerson) {
+  public savePerson(aPerson: Person) {
     // firebase generate of automatic way the id
     // const id = this.db.createId();
     // the id is obtained from the date in long format
-    const id = Date.now();
-    console.log(aPerson);
-    console.log(id);
-    this.db.collection('person').doc(id.toString()).set(aPerson);
+    aPerson.id = Date.now().toString();
+    this.db.collection('person').doc(aPerson.id).set(aPerson);
+  }
+
+  public savePersonFromHttp(aPerson: Person) {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    aPerson.id = Date.now().toString();
+    return this.http.post(this.API_ENDPOINTS.concat('/person.json'), aPerson, {headers});
+  }
+
+  public updatePerson(aPerson: Person) {
+    this.db.collection('person').doc(aPerson.id).set(aPerson);
   }
 
   public consumingRESTAPIUsers() {

@@ -1,5 +1,5 @@
 import { PersonService } from './../services/person.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-person',
@@ -18,9 +18,8 @@ export class PersonComponent {
       });
     aPersonService.consumingRESTAPIUsers()
       .subscribe(users => {
-        console.log(users);
         this.users = users;
-      });
+      }, (error => console.log('Se presento el error: '.concat(error.statuText))));
   }
 
 }

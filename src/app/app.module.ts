@@ -34,6 +34,7 @@ import { DetailEmployeComponent } from './detail-employe/detail-employe.componen
 import { CreateEmployeComponent } from './create-employe/create-employe.component';
 import { PersonComponent } from './person/person.component';
 import { CreatePersonComponent } from './create-person/create-person.component';
+import { LinkifyStringPipe } from './pipes/linkify-string.pipe';
 
 // Rxjs
 
@@ -45,7 +46,8 @@ import { CreatePersonComponent } from './create-person/create-person.component';
     DetailEmployeComponent,
     CreateEmployeComponent,
     PersonComponent,
-    CreatePersonComponent
+    CreatePersonComponent,
+    LinkifyStringPipe
   ],
   imports: [
     BrowserModule,

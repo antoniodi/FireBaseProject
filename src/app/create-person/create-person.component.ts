@@ -1,3 +1,4 @@
+import { Person } from './../interfaces/person';
 import { PersonService } from './../services/person.service';
 import { Component} from '@angular/core';
 
@@ -7,10 +8,17 @@ import { Component} from '@angular/core';
   styleUrls: ['./create-person.component.sass']
 })
 export class CreatePersonComponent {
-  aPerson: any = {};
+  aPerson = {};
   constructor(private aPersonService: PersonService) {}
+
   savePerson() {
-    this.aPersonService.savePerson(this.aPerson);
+    this.aPersonService.savePerson(this.aPerson as Person);
+    alert('the person was created successfully');
+    this.aPerson = {};
+  }
+
+  savePersonFromHttp() {
+    console.log(this.aPersonService.savePersonFromHttp(this.aPerson as Person).subscribe());
     alert('the person was created successfully');
     this.aPerson = {};
   }
