@@ -1,0 +1,14 @@
+<form>
+  <mat-form-field >
+    <input matInput placeholder="your user" name="User" [(ngModel)]="anUser.email">
+  </mat-form-field>
+  <br> 
+  <mat-form-field >
+    <input matInput placeholder="your password" type="password" name="Password" [(ngModel)]="anUser.password">
+  </mat-form-field>
+  <br> 
+  <mat-form-field >
+    <input matInput placeholder="your password" type="password" name="Repeat your password">
+  </mat-form-field>
+</form>
+<span> <button mat-flat-button color="primary" (click)="SignIn()">Register</button> </span>

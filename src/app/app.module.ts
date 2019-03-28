@@ -1,3 +1,4 @@
+import { GuardService } from './services/guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -35,6 +36,8 @@ import { CreateEmployeComponent } from './create-employe/create-employe.componen
 import { PersonComponent } from './person/person.component';
 import { CreatePersonComponent } from './create-person/create-person.component';
 import { LinkifyStringPipe } from './pipes/linkify-string.pipe';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 // Rxjs
 
@@ -47,7 +50,9 @@ import { LinkifyStringPipe } from './pipes/linkify-string.pipe';
     CreateEmployeComponent,
     PersonComponent,
     CreatePersonComponent,
-    LinkifyStringPipe
+    LinkifyStringPipe,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,7 @@ import { LinkifyStringPipe } from './pipes/linkify-string.pipe';
     MatCardModule, MatIconModule, MatGridListModule, BrowserAnimationsModule, MatOptionModule, MatSelectModule,
     FormsModule, HttpClientModule
   ],
-  providers: [],
+  providers: [GuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
